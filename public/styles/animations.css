@@ -342,3 +342,56 @@ body.revealed #content, body.revealed #glass-content {
         transform: scale(1);
     }
 }
+
+/* Animation Effects */
+.anim-in-l, .anim-in-r, .anim-in-b, .anim-in-t {
+    opacity: 0;
+}
+.anim-in-l.start-fx {
+    opacity: 1;
+    -webkit-animation: animContentFromLeft 1s cubic-bezier(0.7,0,0.3,1) both;
+    animation: animContentFromLeft 1s cubic-bezier(0.7,0,0.3,1) both;
+}
+.anim-in-r.start-fx {
+    opacity: 1;
+    -webkit-animation: animContentFromRight 1s cubic-bezier(0.7,0,0.3,1) both;
+    animation: animContentFromRight 1s cubic-bezier(0.7,0,0.3,1) both;
+}
+.anim-in-b.start-fx {
+    opacity: 1;
+    -webkit-animation: animContentFromBottom 1s cubic-bezier(0.7,0,0.3,1) both;
+    animation: animContentFromBottom 1s cubic-bezier(0.7,0,0.3,1) both;
+}
+.anim-in-t.start-fx {
+    opacity: 1;
+    -webkit-animation: animContentFromTop 1s cubic-bezier(0.7,0,0.3,1) both;
+    animation: animContentFromTop 1s cubic-bezier(0.7,0,0.3,1) both;
+}
+
+@-webkit-keyframes animContentFromLeft {
+    from { opacity: 0; -webkit-transform: translate3d(-200px,0,0); }
+}
+@keyframes animContentFromLeft {
+    from { opacity: 0; -webkit-transform: translate3d(-200px,0,0); transform: translate3d(-200px,0,0); }
+}
+
+@-webkit-keyframes animContentFromRight {
+    from { opacity: 0; -webkit-transform: translate3d(200px,0,0); }
+}
+@keyframes animContentFromRight {
+    from { opacity: 0; -webkit-transform: translate3d(200px,0,0); transform: translate3d(200px,0,0); }
+}
+
+@-webkit-keyframes animContentFromBottom {
+    from { opacity: 0; -webkit-transform: translate3d(0,200px,0); }
+}
+@keyframes animContentFromBottom {
+    from { opacity: 0; -webkit-transform: translate3d(0,200px,0); transform: translate3d(0,200px,0); }
+}
+
+@-webkit-keyframes animContentFromTop {
+    from { opacity: 0; -webkit-transform: translate3d(0,-200px,0); }
+}
+@keyframes animContentFromTop {
+    from { opacity: 0; -webkit-transform: translate3d(0,-200px,0); transform: translate3d(0,-200px,0); }
+}

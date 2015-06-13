@@ -1,6 +1,6 @@
 html * {margin: 0; padding: 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200;}
 
-body {background: #dddddd !important; -webkit-font-smoothing: antialiased; font-smoothing: antialiased;}
+body {background: #ddd !important; -webkit-font-smoothing: antialiased; font-smoothing: antialiased;}
 
 .large-header {position: absolute; width: 100%; overflow: hidden; background: black; z-index: 2;}
 .header-caption {position: absolute; right: 0; bottom: 0; color: rgba(255,255,255,1); padding: 10px; font-size: 1.5rem !important; z-index: 5;}

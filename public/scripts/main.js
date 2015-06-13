@@ -20,6 +20,7 @@
         bgrInterval, noscroll = true,
         isRevealed = false,
         aAnimIn, t,
+        animInItems = document.querySelectorAll('.anim-in-l, .anim-in-r, .anim-in-b, .anim-in-t'),
         map, pointarray, heatmap,
         infoWindows = [],
         oCounter, cnt = 0;
@@ -122,7 +123,7 @@
                 }
             },
             low: 0,
-            high: 230
+            high: 300
         };
 
         /* Initialize the chart with the above settings */
@@ -245,6 +246,23 @@
             toggle(0);
         } else if (scrollVal > 0 && !isRevealed) {
             toggle(1);
+        }
+
+        var bodyRect = document.body.getBoundingClientRect(),
+            viewYPosBottom = window.pageYOffset + window.innerHeight;
+
+        // start entrance animation
+        for (var i = 0; i < animInItems.length; i++) {
+            if (!classie.has(animInItems[i], 'start-fx')) {
+                var element = animInItems[i],
+                    elemRect = element.getBoundingClientRect(),
+                    elemTop = elemRect.top - bodyRect.top;
+
+                // start animation when element passed one quarter of viewport
+                if (elemTop - viewYPosBottom < window.innerHeight * -1 / 4) {
+                    classie.add(element, 'start-fx');
+                }
+            }
         }
 
         // Animate Sections
