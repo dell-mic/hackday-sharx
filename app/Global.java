@@ -20,6 +20,10 @@ import static play.mvc.Results.notFound;
 
 public class Global extends GlobalSettings {
 
+    public double abssin(double x) {
+        return Math.abs(Math.sin(x/5000));
+    }
+
     public void onStart(Application app) {
         Config config = ConfigFactory.load();
 
@@ -28,27 +32,30 @@ public class Global extends GlobalSettings {
         String[] carrierCandidates = {"Lufthansa", "Air Berlin", "United"};
         String[] entityCodeAbrvCandidates = {"LH140", "AB320", "UA650"};
 
-        int priceBaseline = randInt(50, 200);
-        OrderEntry lastOE = OrderEntry.last();
-        if (lastOE != null) {
-            priceBaseline = OrderEntry.last().price + randInt(-20, 20);
-            if (priceBaseline < 10) priceBaseline += 20;
-        }
 
-        final int pbl = priceBaseline;
+//        if (lastOE != null) {
+//            priceBaseline = OrderEntry.last().price + randInt(-20, 20);
+//            if (priceBaseline < 10) priceBaseline += 20;
+//        }
 
         Akka.system().scheduler().schedule(
                 Duration.create(1, TimeUnit.SECONDS),
                 Duration.create(1000, TimeUnit.MILLISECONDS),     //Frequency
                 () -> {
+                    OrderEntry lastOE = OrderEntry.last();
+                    double sin = abssin(lastOE.getPeriod()) + abssin(lastOE.createdAt.getTime());
+//                    sin = sin < 0 ? -1 * sin : sin;
+                    int pbl = (int) (sin * 110);
+                    Logger.debug(""+pbl);
+
                     for (int i = 0; i < 3; i++) {
                         OrderEntry orderEntry = new OrderEntry();
                         orderEntry.entityCode = entityCodeAbrvCandidates[i];
                         orderEntry.carrier = carrierCandidates[i];
-                        orderEntry.price = pbl + randInt(1,30);
-                        orderEntry.quantity = 10 + randInt(1,5)*10;
+                        orderEntry.price = pbl - i*10 - randInt(5, 20);
+                        orderEntry.quantity = 10 + randInt(1, 5) * 10;
                         orderEntry.seatType = "B";
-                        orderEntry.type = randInt(0,1) == 0 ? "buy" : "sell";
+                        orderEntry.type = randInt(0, 1) == 0 ? "buy" : "sell";
                         orderEntry.save();
                     }
                 },
@@ -70,7 +77,7 @@ public class Global extends GlobalSettings {
      * @return
      */
     public F.Promise<Result> onError(Http.RequestHeader request, Throwable t) {
-        return F.Promise.<Result> pure(internalServerError(
+        return F.Promise.<Result>pure(internalServerError(
                 Messages.get("error.global", t.getMessage())
         ));
     }
@@ -96,8 +103,6 @@ public class Global extends GlobalSettings {
     }
 
     private static Random rand = new Random();
-
-
 
 
     private void startChallengeTimeoutTask() {
@@ -133,7 +138,6 @@ public class Global extends GlobalSettings {
 //                Akka.system().dispatcher(),
 //                null
 //        );
-
 
 
     }
