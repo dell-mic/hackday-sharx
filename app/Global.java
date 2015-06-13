@@ -45,7 +45,7 @@ public class Global extends GlobalSettings {
                     OrderEntry lastOE = OrderEntry.last();
                     double sin = abssin(lastOE.getPeriod()) + abssin(lastOE.createdAt.getTime());
 //                    sin = sin < 0 ? -1 * sin : sin;
-                    int pbl = (int) (sin * 110);
+                    int pbl = (int) (sin * 110) + 70;
                     Logger.debug(""+pbl);
 
                     for (int i = 0; i < 3; i++) {
