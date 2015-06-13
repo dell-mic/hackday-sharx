@@ -28,17 +28,24 @@ public class Global extends GlobalSettings {
         String[] carrierCandidates = {"Lufthansa", "Air Berlin", "United"};
         String[] entityCodeAbrvCandidates = {"LH140", "AB320", "UA650"};
 
-        int priceBaseline = randInt(20, 200);
+        int priceBaseline = randInt(50, 200);
+        OrderEntry lastOE = OrderEntry.last();
+        if (lastOE != null) {
+            priceBaseline = OrderEntry.last().price + randInt(-20, 20);
+            if (priceBaseline < 10) priceBaseline += 20;
+        }
+
+        final int pbl = priceBaseline;
 
         Akka.system().scheduler().schedule(
                 Duration.create(1, TimeUnit.SECONDS),
-                Duration.create(1000, TimeUnit.MILLISECONDS),     //Frequency 30 minutes
+                Duration.create(1000, TimeUnit.MILLISECONDS),     //Frequency
                 () -> {
                     for (int i = 0; i < 3; i++) {
                         OrderEntry orderEntry = new OrderEntry();
                         orderEntry.entityCode = entityCodeAbrvCandidates[i];
                         orderEntry.carrier = carrierCandidates[i];
-                        orderEntry.price = priceBaseline + randInt(1,50);
+                        orderEntry.price = pbl + randInt(1,30);
                         orderEntry.quantity = 10 + randInt(1,5)*10;
                         orderEntry.seatType = "B";
                         orderEntry.type = randInt(0,1) == 0 ? "buy" : "sell";

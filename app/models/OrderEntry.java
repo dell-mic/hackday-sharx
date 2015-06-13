@@ -43,7 +43,15 @@ public class OrderEntry extends Model {
     public static List<OrderEntry> recent() {
         return find.where()
                 .orderBy("createdAt desc")
-                .setMaxRows(30)
+                .setMaxRows(60)
                 .findList();
     }
+
+    public static OrderEntry last() {
+        return find.where()
+                .orderBy("createdAt desc")
+                .setMaxRows(1)
+                .findUnique();
+    }
+
 }
