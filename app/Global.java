@@ -12,6 +12,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 import scala.concurrent.duration.Duration;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import static play.mvc.Results.internalServerError;
@@ -30,8 +31,8 @@ public class Global extends GlobalSettings {
                 () -> {
                     OrderEntry orderEntry = new OrderEntry();
                     orderEntry.entityCode = "LH140";
-                    orderEntry.price = 34;
-                    orderEntry.quantity = 10;
+                    orderEntry.price = 70 + randInt(20,200);
+                    orderEntry.quantity = 10 + randInt(1,5)*10;
                     orderEntry.seatType = "B";
                     orderEntry.type = "offer";
                     orderEntry.save();
@@ -65,6 +66,20 @@ public class Global extends GlobalSettings {
                 Messages.get("error.routeNotFound")
         ));
     }
+
+    public static int randInt(int min, int max) {
+
+        // NOTE: Usually this should be a field rather than a method
+        // variable so that it is not re-seeded every call.
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
+    }
+
 
 
 
