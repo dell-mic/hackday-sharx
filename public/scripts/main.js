@@ -20,6 +20,7 @@
         bgrInterval, noscroll = true,
         isRevealed = false,
         aAnimIn, t,
+        oHotelIcon = document.querySelector('.hotel-case'),
         animInItems = document.querySelectorAll('.anim-in-l, .anim-in-r, .anim-in-b, .anim-in-t'),
         map, pointarray, heatmap,
         infoWindows = [],
@@ -35,6 +36,43 @@
         oHeaderBar.addEventListener('click', function() {
             toggle();
         });
+        oHotelIcon.addEventListener('click', function(event) {
+            // This is very inperformant but quick to implement (Hackathon style)
+            if (event.currentTarget.rooms) {
+                event.currentTarget.querySelector("img").src = "styles/img/hotel.svg";
+                var myNodeList = document.querySelectorAll(".image-wrap img");
+                [].forEach.call(myNodeList, function(img, index) {
+                    img.src = "styles/img/bgr_" + (index + 1) + ".jpg";
+                });
+                document.getElementById("product-suffix").innerHTML = "X Flights";
+                document.querySelector(".subtitle p").innerHTML = "We'll revolutionize the flight ticket market!";
+                event.currentTarget.rooms = false;
+            } else {
+                event.currentTarget.querySelector("img").src = "styles/img/airline.svg";
+                var myNodeList = document.querySelectorAll(".image-wrap img");
+                [].forEach.call(myNodeList, function(img, index) {
+                    img.src = "styles/img/bgr_" + (index + 3) + ".jpg";
+                });
+                document.getElementById("product-suffix").innerHTML = "X Rooms";
+                document.querySelector(".subtitle p").innerHTML = "We'll revolutionize the hotel room market!";
+                event.currentTarget.rooms = true;
+            };
+        });
+        
+        // init element visibility
+        $(".loading-block").hide();
+        $("#gini-kpi").hide();
+        document.getElementById("gini-start").addEventListener('click', function(event) { 
+            // classie.add(document.getElementById("gini-kpi"), 'anim-in-l');
+            // classie.add(document.getElementById("gini-kpi"), 'start-fx');
+            $(".loading-block").fadeIn();
+            window.setTimeout(function(){
+                $(".loading-block").fadeOut();
+                $("#gini-kpi").fadeIn();
+            },3000);
+            // classie.add(document.querySelector(".loading-block"), 'start-fx');
+        });  
+
         if (!language) return;
         for (var i = 0; i < language.children.length; i++) {
             language.children[i].addEventListener('click', function(e) {
@@ -170,9 +208,9 @@
                 };
 
                 $("#offers").html("");
-                JSON.parse(r.response).filter(function(obj) {
+                _.sortBy(JSON.parse(r.response).filter(function(obj) {
                     return obj.type === "sell";
-                }).slice(0,10).forEach(function(obj) {
+                }),"price").slice(0, 10).forEach(function(obj) {
                     $("#offers").append("<tr>" +
                         "<th scope='row'>" + obj.entityCode + "</th>" +
                         "<td>" + obj.carrier + "</td>" +
@@ -183,9 +221,9 @@
                 });
 
                 $("#demand").html("");
-                JSON.parse(r.response).filter(function(obj) {
+                _.sortBy(JSON.parse(r.response).filter(function(obj) {
                     return obj.type === "buy";
-                }).slice(0,10).forEach(function(obj) {
+                }),"price").reverse().slice(0, 10).forEach(function(obj) {
                     $("#demand").append("<tr>" +
                         "<th scope='row'>" + obj.entityCode + "</th>" +
                         "<td>" + obj.carrier + "</td>" +
@@ -203,6 +241,8 @@
             };
             r.send();
         }, 1000);
+
+        
 
     }
 

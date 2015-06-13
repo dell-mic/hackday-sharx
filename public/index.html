@@ -35,6 +35,7 @@
                 <img src="styles/img/bgr_2.jpg" alt="Hintergrundbild">
             </li>
         </ul>
+        <div class="hotel-case"><img src="styles/img/hotel.svg" width="30px"></div>
         <canvas id="header-canvas"></canvas>
         <div id="header-skipper" class="header-skipper">Flight Exchange Platform
             <div class="arrow-down"></div>
@@ -44,7 +45,7 @@
     <header>
         <div>
             <span>Share</span>
-            <span class="thin">X Flights</span>
+            <span id="product-suffix" class="thin">X Flights</span>
         </div>
         <div class="subtitle">
             <p>We'll revolutionize the flight ticket market!</p>
@@ -61,7 +62,7 @@
     </div>
     <section class="container">
         <div class="spacer"></div>
-        <h1><img src="styles/img/orderbook.svg" width="50px"/>Orderbook <span class="label label-default">live</span></h1>
+        <h1 class="anim-in-l"><img src="styles/img/orderbook.svg" width="50px"/>Orderbook <span class="label label-default">live</span></h1>
         <div class="row">
             <div class="col-md-6 anim-in-l">
                 <h2>Offer</h2>
@@ -97,8 +98,8 @@
     </section>
     <section class="container">
         <div class="spacer"></div>
+        <h1 class="anim-in-l">Everybody Wins</h1>
         <div class="row">
-            <h1>Everybody Wins</h1>
             <div class="col-md-4 anim-in-b">
                 <img src="styles/img/airline.svg" width="50px">
                 <h2>Airline</h2>
@@ -167,6 +168,27 @@
         <div class="anim-in-b">
             <img src="styles/img/architecture.svg" />
         </div>
+    </section>
+    <section class="container">
+        <div class="spacer"></div>
+        <h1 class="anim-in-l">What You Could Have Saved</h1>
+        <div class="spacer"></div>
+        <button type="button" id="gini-start" class="btn btn-lg btn-primary center-block anim-in-r">Analyze flight tickets from your Google account</button>
+        <div id="gini-kpi" class="center-block">
+            <h2>Your savings</h2>
+            <div>802,41 €</div>
+        </div>
+        <div class="loading-block center-block" style="width: 400px;">
+            <h3>Gini API is working very hard...</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/classie.js"></script>

@@ -78,6 +78,24 @@ body.revealed header .subtitle {display: none; }
 .x-pink {color: #f05b4f;}
 .x-yellow {color: #f4c63d;}
 svg span.ct-label {font-size: 1.5rem;}
+.table * {font-weight: 600 !important; font-size: 1.5rem !important;}
+
+#gini-kpi {font-size: 8rem; font-weight: 600; color: #5cc96d; text-align: center;}
+
+/*
+* BUTTON STYLES
+*/
+/*button.btn.btn-default {
+  background-color: transparent;
+  border-color: #2895F1;
+  color: #2895F1;
+}
+button.btn.btn-default:hover, button.btn.btn-default:active {
+  border-color: #007ee5;
+  color: #007ee5;
+}*/
+
+.hotel-case {position: absolute; top: 40px; right: 40px; z-index: 999; cursor: pointer}
 
 section:first-of-type {margin-top: 0rem;}
 section {width: 100%; height: 100%; position: relative;}
