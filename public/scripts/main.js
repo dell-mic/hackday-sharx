@@ -21,7 +21,8 @@
         isRevealed = false,
         aAnimIn, t,
         map, pointarray, heatmap,
-        infoWindows = [], oCounter, cnt = 0;
+        infoWindows = [],
+        oCounter, cnt = 0;
 
     // Event handling
     function addListeners() {
@@ -29,6 +30,9 @@
         window.addEventListener('scroll', scroll);
         skipper.addEventListener('click', function() {
             toggle(1);
+        });
+        oHeaderBar.addEventListener('click', function() {
+            toggle();
         });
         if (!language) return;
         for (var i = 0; i < language.children.length; i++) {
@@ -87,14 +91,14 @@
     }
 
     function initWebSocket() {
-        var socket = io('localhost:3000');
+        // var socket = io('localhost:3000');
 
-        socket.on('newCamera', function(data){
-            console.log(data);
+        // socket.on('newCamera', function(data){
+        //     console.log(data);
 
-            var image = 'img/mapcamNew.svg';
-            addCamMarker(data, image, true);
-        });
+        //     var image = 'img/mapcamNew.svg';
+        //     addCamMarker(data, image, true);
+        // });
     }
 
     function initContent() {
@@ -109,193 +113,49 @@
         oContent.style.height = window.innerHeight + 'px';
         oContent.height = window.innerHeight + 'px';
 
-        var mapOptions = {
-            zoom: 14,
-            center: new google.maps.LatLng(48.1351253, 11.5819806)
+        // INIT THE CHART
+        /* Add a basic data series with six labels and values */
+        var d = new Date();
+        var n = d.getTime();
+        var data = {
+            labels: ['1', '2', '3', '4', '5', '6'],
+            series: [{
+                data: [1, 2, 3, 5, 8, 13]
+            },{
+                data: [5, 4, 1, 15, 4, 12]
+            },{
+                data: [4, 6, 8, 2, 1, 10]
+            }]
         };
-        map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
 
-        var pointArray = new google.maps.MVCArray(crimeData.map(function(crime) {
-            return new google.maps.LatLng(crime.lat, crime.lng);
-        }));
-
-        heatmap = new google.maps.visualization.HeatmapLayer({
-            data: pointArray
-        });
-        heatmap.set('radius', heatmap.get('radius') ? null : 50);
-        var gradient = [
-            'rgba(255, 255, 255, 0)',
-            'rgba(255, 0, 0, 1)',
-            'rgba(255, 0, 0, 1)',
-            'rgba(255, 0, 0, 1)',
-            'rgba(255, 0, 0, 1)',
-            'rgba(255, 0, 0, 1)',
-            'rgba(240, 0, 0, 1)',
-            'rgba(220, 0, 0, 1)',
-            'rgba(200, 0, 0, 1)',
-            'rgba(180, 0, 0, 1)',
-            'rgba(160, 0, 0, 1)',
-            'rgba(140, 0, 0, 1)',
-            'rgba(120, 0, 0, 1)',
-            'rgba(100, 0, 0, 1)',
-            'rgba(80, 0, 0, 1)',
-            'rgba(60, 0, 0, 1)',
-            'rgba(40, 0, 0, 1)',
-            'rgba(20, 0, 0, 1)',
-            'rgba(0, 0, 0, 1)'
-        ];
-        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
-
-        var image = 'img/mapcam.svg';
-        for (var i = 0; i < camData.length; i++) {
-            var cam = camData[i];
-            addCamMarker(cam, image, false);
+        /* Set some base options (settings will override the default settings in Chartist.js *see default settings*). We are adding a basic label interpolation function for the xAxis labels. */
+        var options = {
+            axisX: {
+                labelInterpolationFnc: function(value) {
+                    return 'Time ' + value;
+                }
+            }
         };
-        var imageCrime = 'img/crimeMarker.svg';
-        for (var i = 0; i < crimeData.length; i++) {
-            var crime = crimeData[i];
-            addCrimeMarker(crime, imageCrime, false);
-        };
-        heatmap.setMap(map);
+
+        /* Initialize the chart with the above settings */
+        var chart = new Chartist.Line('#x-chart', data, options);
+
+        window.setInterval(function(){
+            data.labels.shift();
+            data.labels.push('7');
+            data.series.forEach(function(serie){
+                serie.data.shift();
+                serie.data.push(Math.floor(Math.random() * 10));
+            });
+            chart.update(data);
+        }, 1000);
+
     }
 
     function closeAllInfoWindows() {
         for (var i = 0; i < infoWindows.length; i++) {
             infoWindows[i].close();
         }
-    }
-
-    function addCrimeMarker(crime, image, animated) {
-        animated = animated ? google.maps.Animation.DROP : null;
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(crime.lat, crime.lng),
-            map: map,
-            icon: image,
-            title: crime.owner,
-            draggable: false,
-            animation: animated
-        });
-
-        var adress = !crime.adress ? "Unbekannt" : crime.adress;
-
-        marker.info = new google.maps.InfoWindow({
-            content: '<div class="popup-marker"><h2>' + crime.type.toUpperCase() + '</h2>' +
-                '<div><b>Datum:</b><p>' + crime.time + '</p></div>' +
-                '<div><b>Adresse:</b><p>' + adress + '</p></div>' +
-                '<div><b>Titel:</b><p>' + crime.title + '</p></div>' +
-                '<div><b>Beschreibung:</b><p class="text">' + crime.full_text + '</p></div>' +
-                '</div>'
-        });
-        infoWindows.push(marker.info);
-        google.maps.event.addListener(marker, 'click', function() {
-            closeAllInfoWindows();
-            marker.info.open(map, marker);
-        });
-    }
-
-    function addCamMarker(cam, image, animated) {
-        var lat, lng;
-        if (typeof cam.lat == "string" && typeof cam.lng == "string") {
-            // GPS Position are notated as strings and must be transformed
-            // debugger
-            cam.lat = cam.lat.replace(/\s+/g,"");
-            cam.lng = cam.lng.replace(/\s+/g,"");
-            var latParts = cam.lat.split(/[^\d\w]+/);
-            var lngParts = cam.lng.split(/[^\d\w]+/);
-            lat = ConvertDMSToDD(parseInt(latParts[0]), parseInt(latParts[1]), parseInt(latParts[2]), latParts[3]);
-            lng = ConvertDMSToDD(parseInt(lngParts[0]), parseInt(lngParts[1]), parseInt(lngParts[2]), lngParts[3]);
-        } else {
-            lat = cam.lat;
-            lng = cam.lng;
-        }
-
-        animated = animated ? google.maps.Animation.DROP : null;
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(lat, lng),
-            map: map,
-            icon: image,
-            title: cam.owner,
-            draggable: false,
-            animation: animated
-        });
-
-        var audio = (cam.audio == "true") ? "Ja" : "Nein";
-        var realtime = (cam.realtime == "true") ? "Ja" : "Nein";
-        var oR = (cam.objectRecognition == "true") ? "Ja" : "Nein";
-
-        var camImg = "";
-        if (cam.img && cam.img != "") {
-            camImg = "<div class='cam-img' style='background-image: url("+cam.img+")'></div>"
-        }
-
-        var category = '';
-        if (cam.category.indexOf("publicSecurity") > -1) category += "<i class='icon-shield'></i><span>Öffentliche Sicherheit </span>";
-        if (cam.category.indexOf("traffic") > -1) category += "<i class='icon-road'></i><span>Verkehrsüberwachtung </span>";
-        if (cam.category.indexOf("propertySec") > -1) category += "<i class='icon-building'></i><span>Objektschutz </span>";
-        if (cam.category.indexOf("other") > -1) category += "<i class='icon-eye2'></i><span>Sonstiges </span>";
-
-        var address = (cam.adress == "") ? cam.owner : cam.adress;
-        var pub = cam.countPublic == null ? "Keine" : cam.countPublic;
-        debugger
-        marker.info = new google.maps.InfoWindow({
-            content: '<div class="popup-marker"><h2>' + cam.owner + '</h2>' +
-                camImg +
-                '<div><b>Adresse:</b><span>' + address + '</span></div>' +
-                '<div><b>Anzahl Kameras:</b><span>' + cam.count + '</span></div>' +
-                '<div><b>Davon im öff. Raum:</b><span>' + pub + '</span></div>' +
-                '<div><b>Kategorie:</b><span>' + category + '</span></div>' +
-                '<div class="'+audio+'"><i class="icon-audio"></i><b>Audiofähig:</b><span>' + audio + '</span></div>' +
-                '<div class="'+realtime+'"><i class="icon-realtime"></i><b>Echtzeitübertragung:</b><span>' + realtime + '</span></div>' +
-                '<div class="'+oR+'"><i class="icon-target"></i><b>Objekterkennung:</b><span>' + oR + '</span></div>' +
-                '</div>'
-        });
-        infoWindows.push(marker.info);
-        google.maps.event.addListener(marker, 'click', function() {
-            closeAllInfoWindows();
-            marker.info.open(map, marker);
-        });
-
-        cnt += cam.count;
-        oCounter.innerHTML = cnt;
-    }
-
-    function ConvertDMSToDD(degrees, minutes, seconds, direction) {
-        var dd = degrees + minutes / 60 + seconds / (60 * 60);
-
-        if (direction == "S" || direction == "W") {
-            dd = dd * -1;
-        } // Don't do anything for N or E
-        return dd;
-    }
-
-    function colorize() {
-        t.options.x_gradient = Trianglify.randomColor();
-        t.options.y_gradient = t.options.x_gradient.map(function(c) {
-            return d3.rgb(c).brighter(0.5);
-        });
-    }
-
-    function languageDialog() {
-        if (language.className === '') {
-            language.className = 'language-select';
-            clearTimeout(hideLangageList);
-            hideLangageList = setTimeout(languageDialog, 4000);
-        } else {
-            language.className = '';
-        }
-    }
-
-    function selectLanguage(e) {
-        if (e.currentTarget.classList.contains('language-selected')) {
-            e.preventDefault();
-        } else {
-            e.currentTarget.parentNode.querySelector('.language-selected').className = '';
-            e.currentTarget.className = 'language-selected';
-            var currentLanguage = e.currentTarget.getAttribute('data-language');
-        };
-        clearTimeout(hideLangageList);
-        hideLangageList = setTimeout(languageDialog, 4000);
     }
 
     function disable_scroll() {
