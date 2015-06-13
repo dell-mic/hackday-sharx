@@ -26,6 +26,7 @@ public class Global extends GlobalSettings {
 //        Logger.info(Akka.system().settings().toString());
 
         String[] carrierCandidates = {"Lufthansa", "Air Berlin", "United"};
+        String[] entityCodeAbrvCandidates = {"LH140", "AB320", "UA650"};
 
         Akka.system().scheduler().schedule(
                 Duration.create(1, TimeUnit.SECONDS),
@@ -33,7 +34,8 @@ public class Global extends GlobalSettings {
                 () -> {
                     for (int i = 0; i < 3; i++) {
                         OrderEntry orderEntry = new OrderEntry();
-                        orderEntry.entityCode = carrierCandidates[i];
+                        orderEntry.entityCode = entityCodeAbrvCandidates[i];
+                        orderEntry.carrier = carrierCandidates[i];
                         orderEntry.price = 70 + randInt(20,200);
                         orderEntry.quantity = 10 + randInt(1,5)*10;
                         orderEntry.seatType = "B";
