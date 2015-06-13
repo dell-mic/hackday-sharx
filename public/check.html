@@ -87,7 +87,7 @@
                                 r.open("POST", "https://api.gini.net/documents", true);
                                 r.setRequestHeader('Accept', 'application/vnd.gini.v1+json');
                                 r.setRequestHeader('Authorization', 'BEARER 0ab959ac-716e-4178-abf9-1d5e747a1e4f');
-                                r.setRequestHeader("Content-Type", fileType);
+                                //r.setRequestHeader("Content-Type", fileType);
                                 //r.setRequestHeader("X-File-Name", encodeURIComponent(fileName));
                                 r.onreadystatechange = function () {
                                     if (r.readyState != 4) return;
@@ -97,9 +97,10 @@
                                 };
                                 appendPre(data.data);
                                 debugger
-                                var decoded = window.atob(data.data.replace("-", "+").replace("_", "/"));
-
-                                r.send(decoded);
+                                var s = data.data.replace(/-/g, "+").replace(/_/g, "/");
+                                var decoded = window.atob(s).trim();
+                                var b = new Blob([decoded], {"type": "application/octect-stream"});
+                                r.send(b);
                             }
 
                         })
