@@ -12,6 +12,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 import scala.concurrent.duration.Duration;
 
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +22,20 @@ import static play.mvc.Results.notFound;
 public class Global extends GlobalSettings {
 
     public double abssin(double x) {
-        return Math.abs(Math.sin(x/5000));
+        return Math.abs(Math.sin(x / 5000));
+    }
+
+    public int generateDemoData() {
+        OrderEntry lastOE = OrderEntry.last();
+        double result;
+        if (lastOE != null)
+            result =  abssin(lastOE.getPeriod()) + abssin(lastOE.createdAt.getTime());
+        else {
+            result = abssin(new Date().getTime());
+        }
+
+        return (int) (result * 110) + 70;
+
     }
 
     public void onStart(Application app) {
@@ -42,17 +56,14 @@ public class Global extends GlobalSettings {
                 Duration.create(1, TimeUnit.SECONDS),
                 Duration.create(1000, TimeUnit.MILLISECONDS),     //Frequency
                 () -> {
-                    OrderEntry lastOE = OrderEntry.last();
-                    double sin = abssin(lastOE.getPeriod()) + abssin(lastOE.createdAt.getTime());
-//                    sin = sin < 0 ? -1 * sin : sin;
-                    int pbl = (int) (sin * 110) + 70;
-                    Logger.debug(""+pbl);
+                    int pbl = generateDemoData();
+                    Logger.debug("" + pbl);
 
                     for (int i = 0; i < 3; i++) {
                         OrderEntry orderEntry = new OrderEntry();
                         orderEntry.entityCode = entityCodeAbrvCandidates[i];
                         orderEntry.carrier = carrierCandidates[i];
-                        orderEntry.price = pbl - i*10 - randInt(5, 20);
+                        orderEntry.price = pbl - i * 10 - randInt(5, 20);
                         orderEntry.quantity = 10 + randInt(1, 5) * 10;
                         orderEntry.seatType = "B";
                         orderEntry.type = randInt(0, 1) == 0 ? "buy" : "sell";

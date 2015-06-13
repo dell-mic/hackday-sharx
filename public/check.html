@@ -58,7 +58,7 @@
         }
 
         function startSearch() {
-            listMessages("me", "flug  has:attachment pdf", function (result) {
+            listMessages("me", "flug filename:pdf", function (result) {
                 //console.log(result);
                 //Loop over message ids
                 result.forEach(function (obj, index) {
@@ -66,9 +66,34 @@
                         //console.log(messages);
 
                         getAttachments("me", messages, function (fileName, fileType, data) {
-                            console.log(fileName);
-                            appendPre(fileName);
-                            debugger
+//                            console.log(fileName);
+//                            console.log(fileName.split('.').pop().toUpperCase());
+                            if (fileName.split('.').pop().toUpperCase() == "PDF") {
+                                appendPre(fileName);
+
+                                //Make post to gini
+                                var headers = {
+                                    'Accept': 'application/vnd.gini.v1+json',
+                                    'Authorization': 'BEARER 0ab959ac-716e-4178-abf9-1d5e747a1e4f'
+                                };
+
+                                var options = {
+                                    url: 'https://api.gini.net/documents',
+                                    method: 'POST',
+                                    headers: headers
+                                };
+
+                                var r = new XMLHttpRequest();
+                                r.open("POST", "https://api.gini.net/documents", true);
+                                r.headers();
+                                r.onreadystatechange = function () {
+                                   // if (r.readyState != 4 || r.status != 200) return;
+                                    console.log(r.responseText);
+                                };
+                                r.send("");
+                                debugger
+                            }
+
                         })
                     });
                 })
