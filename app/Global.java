@@ -25,17 +25,21 @@ public class Global extends GlobalSettings {
 
 //        Logger.info(Akka.system().settings().toString());
 
+        String[] carrierCandidates = {"Lufthansa", "Air Berlin", "United"};
+
         Akka.system().scheduler().schedule(
                 Duration.create(1, TimeUnit.SECONDS),
                 Duration.create(1000, TimeUnit.MILLISECONDS),     //Frequency 30 minutes
                 () -> {
-                    OrderEntry orderEntry = new OrderEntry();
-                    orderEntry.entityCode = "LH140";
-                    orderEntry.price = 70 + randInt(20,200);
-                    orderEntry.quantity = 10 + randInt(1,5)*10;
-                    orderEntry.seatType = "B";
-                    orderEntry.type = "offer";
-                    orderEntry.save();
+                    for (int i = 0; i < 3; i++) {
+                        OrderEntry orderEntry = new OrderEntry();
+                        orderEntry.entityCode = carrierCandidates[i];
+                        orderEntry.price = 70 + randInt(20,200);
+                        orderEntry.quantity = 10 + randInt(1,5)*10;
+                        orderEntry.seatType = "B";
+                        orderEntry.type = "offer";
+                        orderEntry.save();
+                    }
                 },
                 Akka.system().dispatcher()
         );

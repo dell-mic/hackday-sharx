@@ -15,6 +15,8 @@ public class OrderEntry extends Model {
 
     public String type;
 
+    public String carrier;
+
     public String entityCode; //eg LH412
 
     public String seatType;
@@ -28,6 +30,10 @@ public class OrderEntry extends Model {
     public int price;
 
     public int quantity;
+
+    public double getPeriod() {
+        return this.createdAt.getTime() / 1000;
+    }
 
     public static Finder<Long, OrderEntry> find = new Finder<Long, OrderEntry>(
             Long.class, OrderEntry.class
