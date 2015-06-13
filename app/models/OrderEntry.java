@@ -31,11 +31,12 @@ public class OrderEntry extends Model {
 
     public int quantity;
 
+    //Pre aggregate for ui easiness
     public double getPeriod() {
         return this.createdAt.getTime() / 1000;
     }
 
-    public static Finder<Long, OrderEntry> find = new Finder<Long, OrderEntry>(
+    public static Finder<Long, OrderEntry> find = new Finder<>(
             Long.class, OrderEntry.class
     );
 

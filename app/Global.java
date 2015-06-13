@@ -28,6 +28,8 @@ public class Global extends GlobalSettings {
         String[] carrierCandidates = {"Lufthansa", "Air Berlin", "United"};
         String[] entityCodeAbrvCandidates = {"LH140", "AB320", "UA650"};
 
+        int priceBaseline = randInt(20, 200);
+
         Akka.system().scheduler().schedule(
                 Duration.create(1, TimeUnit.SECONDS),
                 Duration.create(1000, TimeUnit.MILLISECONDS),     //Frequency 30 minutes
@@ -36,7 +38,7 @@ public class Global extends GlobalSettings {
                         OrderEntry orderEntry = new OrderEntry();
                         orderEntry.entityCode = entityCodeAbrvCandidates[i];
                         orderEntry.carrier = carrierCandidates[i];
-                        orderEntry.price = 70 + randInt(20,200);
+                        orderEntry.price = priceBaseline + randInt(1,50);
                         orderEntry.quantity = 10 + randInt(1,5)*10;
                         orderEntry.seatType = "B";
                         orderEntry.type = randInt(0,1) == 0 ? "buy" : "sell";
@@ -77,7 +79,7 @@ public class Global extends GlobalSettings {
 
         // NOTE: Usually this should be a field rather than a method
         // variable so that it is not re-seeded every call.
-        Random rand = new Random();
+
 
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
@@ -86,6 +88,7 @@ public class Global extends GlobalSettings {
         return randomNum;
     }
 
+    private static Random rand = new Random();
 
 
 

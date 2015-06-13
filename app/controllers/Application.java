@@ -14,4 +14,8 @@ public class Application extends Controller {
         return ok(Json.toJson(OrderEntry.recent()));
     }
 
+    public Result allOrders() {
+        return ok(Json.toJson(OrderEntry.find.all()));
+    }
+
 }
