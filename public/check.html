@@ -58,9 +58,65 @@
         }
 
         function startSearch() {
-            listMessages("me", "buchung", function() {
-                debugger
+            listMessages("me", "flug  has:attachment pdf", function (result) {
+                //console.log(result);
+                //Loop over message ids
+                result.forEach(function (obj, index) {
+                    appendPre(obj.id);
+                    getMessage("me", obj.id, function (messages) {
+                        //console.log(messages);
+
+                        getAttachments("me", messages, function (fileName, fileType, data) {
+                            console.log(fileName);
+                            debugger
+                        })
+                    });
+                })
+
             })
+        }
+
+        /**
+         * Get Message with given ID.
+         *
+         * @param  {String} userId User's email address. The special value 'me'
+         * can be used to indicate the authenticated user.
+         * @param  {String} messageId ID of Message to get.
+         * @param  {Function} callback Function to call when the request is complete.
+         */
+        function getMessage(userId, messageId, callback) {
+            var request = gapi.client.gmail.users.messages.get({
+                'userId': userId,
+                'id': messageId
+            });
+            request.execute(callback);
+        }
+
+
+        /**
+         * Get Attachments from a given Message.
+         *
+         * @param  {String} userId User's email address. The special value 'me'
+         * can be used to indicate the authenticated user.
+         * @param  {String} messageId ID of Message with attachments.
+         * @param  {Function} callback Function to call when the request is complete.
+         */
+        function getAttachments(userId, message, callback) {
+            var parts = message.payload.parts;
+            for (var i = 0; i < parts.length; i++) {
+                var part = parts[i];
+                if (part.filename && part.filename.length > 0) {
+                    var attachId = part.body.attachmentId;
+                    var request = gapi.client.gmail.users.messages.attachments.get({
+                        'id': attachId,
+                        'messageId': message.id,
+                        'userId': userId
+                    });
+                    request.execute(function (attachment) {
+                        callback(part.filename, part.mimeType, attachment);
+                    });
+                }
+            }
         }
 
         /**
@@ -72,7 +128,7 @@
                 'userId': 'me'
             });
 
-            request.execute(function(resp) {
+            request.execute(function (resp) {
                 var labels = resp.labels;
                 appendPre('Labels:');
 
@@ -96,8 +152,8 @@
          * @param  {Function} callback Function to call when the request is complete.
          */
         function listMessages(userId, query, callback) {
-            var getPageOfMessages = function(request, result) {
-                request.execute(function(resp) {
+            var getPageOfMessages = function (request, result) {
+                request.execute(function (resp) {
                     result = result.concat(resp.messages);
                     var nextPageToken = resp.nextPageToken;
                     if (nextPageToken) {
