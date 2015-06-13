@@ -39,7 +39,7 @@ public class Global extends GlobalSettings {
                         orderEntry.price = 70 + randInt(20,200);
                         orderEntry.quantity = 10 + randInt(1,5)*10;
                         orderEntry.seatType = "B";
-                        orderEntry.type = "offer";
+                        orderEntry.type = randInt(0,1) == 0 ? "buy" : "sell";
                         orderEntry.save();
                     }
                 },
