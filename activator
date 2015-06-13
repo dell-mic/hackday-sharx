@@ -274,7 +274,7 @@ Usage: $script_name <command> [options]
   SBT_OPTS           Environment variable, if unset uses ""
   ACTIVATOR_OPTS     Environment variable, if unset uses ""
 
-In the case of duplicated or conflicting options, the order above
+In the case of duplicated or conflicting options, the orderEntry above
 shows precedence: environment variables lowest, command line options highest.
 EOM
 }

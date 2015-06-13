@@ -1,14 +1,17 @@
 package controllers;
 
-import play.*;
+import models.OrderEntry;
+import play.libs.Json;
 import play.mvc.*;
-
-import views.html.*;
 
 public class Application extends Controller {
 
     public Result index() {
-        return ok(index.render("Your new application is ready."));
+        return ok("hello world");
+    }
+
+    public Result recentOrders() {
+        return ok(Json.toJson(OrderEntry.recent()));
     }
 
 }
