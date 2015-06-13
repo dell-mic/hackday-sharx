@@ -122,7 +122,7 @@
                 }
             },
             low: 0,
-            high: 300
+            high: 230
         };
 
         /* Initialize the chart with the above settings */
@@ -147,7 +147,8 @@
                         var output = {
                             data: val.map(function(obj) {
                                 if (iterate === 0) {
-                                    labels.push('' + obj.period);
+                                    var date = new Date(obj.createdAt).toLocaleString().substring(11,19);
+                                    labels.push(date);
                                 };
                                 return obj.price
                             }).reverse(),
@@ -160,12 +161,12 @@
                     .value();
 
                 var data = {
-                    labels: labels,
+                    labels: labels.reverse(),
                     series: _.sortBy(series, 'key')
                 };
 
                 // console.log(labels);
-                console.log(data);
+                // console.log(data);
 
                 // UPDATE THE CHART
                 chart.update(data);
