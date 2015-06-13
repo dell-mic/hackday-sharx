@@ -1,6 +1,15 @@
 <html>
 <head>
+    <script src="https://rawgit.com/danguer/blog-examples/master/js/base64-binary.js"></script>
+
+
     <script type="text/javascript">
+
+        var totalAmount = 0.0;
+        var openGiniDocs = [];
+
+        var SAVING_PCT = 0.03;
+
         // Your Client ID can be retrieved from your project in the Google
         // Developer Console, https://console.developers.google.com
         var CLIENT_ID = '687173267686-moe5rcfrv7iiuq7tsa808tudjvdsetka.apps.googleusercontent.com';
@@ -57,6 +66,10 @@
             gapi.client.load('gmail', 'v1', startSearch);
         }
 
+        function currenyCalculation(value, curr) {
+            return value;
+        }
+
         function startSearch() {
             listMessages("me", "flug filename:pdf", function (result) {
                 //console.log(result);
@@ -69,7 +82,7 @@
 //                            console.log(fileName);
 //                            console.log(fileName.split('.').pop().toUpperCase());
                             if (fileName.split('.').pop().toUpperCase() == "PDF") {
-                                appendPre(fileName + " " + fileType);
+//                                appendPre(fileName + " " + fileType);
 
                                 //Make post to gini
                                 var headers = {
@@ -91,16 +104,37 @@
                                 //r.setRequestHeader("X-File-Name", encodeURIComponent(fileName));
                                 r.onreadystatechange = function () {
                                     if (r.readyState != 4) return;
-                                    console.log(r.responseText);
-                                    console.log(r.response);
+                                    console.log(r.getResponseHeader("Location"));
+
+                                    setTimeout(function(){
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open("GET", r.getResponseHeader("Location")+"/extractions", true);
+                                        xhr.setRequestHeader('Accept', 'application/vnd.gini.v1+json');
+                                        xhr.setRequestHeader('Authorization', 'BEARER 0ab959ac-716e-4178-abf9-1d5e747a1e4f');
+                                        xhr.onreadystatechange = function () {
+                                            if (xhr.readyState != 4) return;
+                                            console.log(xhr.responseText);
+                                            var oResponse = JSON.parse(xhr.responseText);
+                                            console.log(fileName);
+                                            console.log(r.getResponseHeader("Location"));
+                                            if(oResponse.extractions.amountToPay) {
+                                                console.log(oResponse.extractions.amountToPay.value);
+                                                var amount = oResponse.extractions.amountToPay.value;
+                                                var eurAmount = currenyCalculation(amount.split(":")[0]);
+                                                console.log(eurAmount);
+                                                totalAmount += parseFloat(eurAmount);
+                                                appendPre(totalAmount*SAVING_PCT);
+                                            }
+                                        }
+                                        xhr.send();
+
+                                    }, 4000);//Rough hack to let gini time to process
 
                                 };
-                                appendPre(data.data);
-                                debugger
+
                                 var s = data.data.replace(/-/g, "+").replace(/_/g, "/");
-                                var decoded = window.atob(s).trim();
-                                var b = new Blob([decoded], {"type": "application/octect-stream"});
-                                r.send(b);
+                                var byteArray = Base64Binary.decodeArrayBuffer(s);
+                                r.send(byteArray);
                             }
 
                         })
@@ -224,6 +258,7 @@
     </script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth">
     </script>
+
 </head>
 <body>
 <div id="authorize-div" style="display: none">
