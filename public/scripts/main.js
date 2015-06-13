@@ -113,72 +113,65 @@
         oContent.style.height = window.innerHeight + 'px';
         oContent.height = window.innerHeight + 'px';
 
-        // Call API initially
-        var r = new XMLHttpRequest();
-        r.open("GET", "/orders/recent", true);
-        r.onreadystatechange = function() {
-            if (r.readyState != 4 || r.status != 200) return;
-            
-            var labels = new Array();
-            var series = new Array();
-            var iterate = 0;
-
-            var map = _.chain(JSON.parse(r.response))
-                        .groupBy('carrier')
-                        .mapObject(function(val, key){
-                            var output = {data: val.map(function(obj){
-                                if (iterate === 0) {
-                                    labels.push(obj.period);
-                                };
-                                return obj.price
-                            })};
-                            iterate++;
-                            series.push(output);
-                            return output;
-                        })
-                        .value();
-
-            console.log(labels);
-            console.log(series);
-        };
-        r.send();
-
         // INIT THE CHART
-        /* Add a basic data series with six labels and values */
-        var d = new Date();
-        var n = d.getTime();
-        var data = {
-            labels: ['1', '2', '3', '4', '5', '6'],
-            series: [{
-                data: [1, 2, 3, 5, 8, 13]
-            }, {
-                data: [5, 4, 1, 15, 4, 12]
-            }, {
-                data: [4, 6, 8, 2, 1, 10]
-            }]
-        };
-
         /* Set some base options (settings will override the default settings in Chartist.js *see default settings*). We are adding a basic label interpolation function for the xAxis labels. */
         var options = {
             axisX: {
                 labelInterpolationFnc: function(value) {
                     return 'Time ' + value;
                 }
-            }
+            },
+            low: 0,
+            high: 300
         };
 
         /* Initialize the chart with the above settings */
-        var chart = new Chartist.Line('#x-chart', data, options);
+        var chart = new Chartist.Line('#x-chart', {labels:[],series:[]}, options);
 
-        // window.setInterval(function(){
-        //     data.labels.shift();
-        //     data.labels.push('7');
-        //     data.series.forEach(function(serie){
-        //         serie.data.shift();
-        //         serie.data.push(Math.floor(Math.random() * 10));
-        //     });
-        //     chart.update(data);
-        // }, 1000);
+        // Create AJAX request
+        window.setInterval(function() {
+            var r = new XMLHttpRequest();
+            r.open("GET", "/orders/recent", true);
+            r.onreadystatechange = function() {
+                if (r.readyState != 4 || r.status != 200) return;
+
+                // console.log(JSON.parse(r.response));
+
+                var labels = new Array();
+                var series = new Array();
+                var iterate = 0;
+
+                var map = _.chain(JSON.parse(r.response))
+                    .groupBy('carrier')
+                    .mapObject(function(val, key) {
+                        var output = {
+                            data: val.map(function(obj) {
+                                if (iterate === 0) {
+                                    labels.push('' + obj.period);
+                                };
+                                return obj.price
+                            }).reverse(),
+                            key: key
+                        };
+                        iterate++;
+                        series.push(output);
+                        return output;
+                    })
+                    .value();
+
+                var data = {
+                    labels: labels,
+                    series: _.sortBy(series, 'key')
+                };
+
+                // console.log(labels);
+                console.log(data);
+
+                // UPDATE THE CHART
+                chart.update(data);
+            };
+            r.send();
+        }, 1000);
 
     }
 
