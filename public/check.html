@@ -69,7 +69,7 @@
 //                            console.log(fileName);
 //                            console.log(fileName.split('.').pop().toUpperCase());
                             if (fileName.split('.').pop().toUpperCase() == "PDF") {
-                                appendPre(fileName);
+                                appendPre(fileName + " " + fileType);
 
                                 //Make post to gini
                                 var headers = {
@@ -85,13 +85,21 @@
 
                                 var r = new XMLHttpRequest();
                                 r.open("POST", "https://api.gini.net/documents", true);
-                                r.headers();
+                                r.setRequestHeader('Accept', 'application/vnd.gini.v1+json');
+                                r.setRequestHeader('Authorization', 'BEARER 0ab959ac-716e-4178-abf9-1d5e747a1e4f');
+                                r.setRequestHeader("Content-Type", fileType);
+                                //r.setRequestHeader("X-File-Name", encodeURIComponent(fileName));
                                 r.onreadystatechange = function () {
-                                   // if (r.readyState != 4 || r.status != 200) return;
+                                    if (r.readyState != 4) return;
                                     console.log(r.responseText);
+                                    console.log(r.response);
+
                                 };
-                                r.send("");
+                                appendPre(data.data);
                                 debugger
+                                var decoded = window.atob(data.data.replace("-", "+").replace("_", "/"));
+
+                                r.send(decoded);
                             }
 
                         })

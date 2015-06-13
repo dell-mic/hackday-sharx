@@ -43,8 +43,8 @@ public class Global extends GlobalSettings {
 
 //        Logger.info(Akka.system().settings().toString());
 
-        String[] carrierCandidates = {"Lufthansa", "Air Berlin", "United"};
-        String[] entityCodeAbrvCandidates = {"LH140", "AB320", "UA650"};
+        String[] carrierCandidates = {"Lufthansa", "Air Berlin", "British Airways"};
+        String[] entityCodeAbrvCandidates = {"LH140", "AB320", "BA650"};
 
 
 //        if (lastOE != null) {
