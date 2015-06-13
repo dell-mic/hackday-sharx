@@ -113,6 +113,36 @@
         oContent.style.height = window.innerHeight + 'px';
         oContent.height = window.innerHeight + 'px';
 
+        // Call API initially
+        var r = new XMLHttpRequest();
+        r.open("GET", "/orders/recent", true);
+        r.onreadystatechange = function() {
+            if (r.readyState != 4 || r.status != 200) return;
+            
+            var labels = new Array();
+            var series = new Array();
+            var iterate = 0;
+
+            var map = _.chain(JSON.parse(r.response))
+                        .groupBy('carrier')
+                        .mapObject(function(val, key){
+                            var output = {data: val.map(function(obj){
+                                if (iterate === 0) {
+                                    labels.push(obj.period);
+                                };
+                                return obj.price
+                            })};
+                            iterate++;
+                            series.push(output);
+                            return output;
+                        })
+                        .value();
+
+            console.log(labels);
+            console.log(series);
+        };
+        r.send();
+
         // INIT THE CHART
         /* Add a basic data series with six labels and values */
         var d = new Date();
@@ -121,9 +151,9 @@
             labels: ['1', '2', '3', '4', '5', '6'],
             series: [{
                 data: [1, 2, 3, 5, 8, 13]
-            },{
+            }, {
                 data: [5, 4, 1, 15, 4, 12]
-            },{
+            }, {
                 data: [4, 6, 8, 2, 1, 10]
             }]
         };
@@ -140,15 +170,15 @@
         /* Initialize the chart with the above settings */
         var chart = new Chartist.Line('#x-chart', data, options);
 
-        window.setInterval(function(){
-            data.labels.shift();
-            data.labels.push('7');
-            data.series.forEach(function(serie){
-                serie.data.shift();
-                serie.data.push(Math.floor(Math.random() * 10));
-            });
-            chart.update(data);
-        }, 1000);
+        // window.setInterval(function(){
+        //     data.labels.shift();
+        //     data.labels.push('7');
+        //     data.series.forEach(function(serie){
+        //         serie.data.shift();
+        //         serie.data.push(Math.floor(Math.random() * 10));
+        //     });
+        //     chart.update(data);
+        // }, 1000);
 
     }
 
