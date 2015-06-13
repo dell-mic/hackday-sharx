@@ -71,6 +71,12 @@ body.revealed header .subtitle {display: none; }
 #content {position: relative; width: 100%; opacity: 0; -webkit-transform: translateY(100%) scale(0.9); transform: translateY(100%) scale(0.9);  z-index: 1;}
 
 #x-chart {height: 100%; width: 100%; margin: 0px; padding: 0px; position: absolute;}
+#title {position: absolute; font-weight: 600; bottom: 40px; left: 60px; z-index: 999;}
+#x-caption {position: absolute; top: 45%; right: 20px;}
+#x-caption li {font-weight: 600; padding-top: 20px;}
+.x-red {color: #d70206;}
+.x-pink {color: #f05b4f;}
+.x-yellow {color: #f4c63d;}
 
 section:first-of-type {margin-top: 0rem;}
 section {width: 100%; height: 100%; position: relative;}
