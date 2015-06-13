@@ -5,6 +5,8 @@
 
     <script type="text/javascript">
 
+    var GINITOKEN = "BEARER 84483968-36c4-4c33-a9b4-d00baa9220db";
+
         var totalAmount = 0.0;
         var openGiniDocs = [];
 
@@ -87,7 +89,7 @@
                                 //Make post to gini
                                 var headers = {
                                     'Accept': 'application/vnd.gini.v1+json',
-                                    'Authorization': 'BEARER 0ab959ac-716e-4178-abf9-1d5e747a1e4f'
+                                    'Authorization': GINITOKEN
                                 };
 
                                 var options = {
@@ -99,7 +101,7 @@
                                 var r = new XMLHttpRequest();
                                 r.open("POST", "https://api.gini.net/documents", true);
                                 r.setRequestHeader('Accept', 'application/vnd.gini.v1+json');
-                                r.setRequestHeader('Authorization', 'BEARER 0ab959ac-716e-4178-abf9-1d5e747a1e4f');
+                                r.setRequestHeader('Authorization', GINITOKEN);
                                 //r.setRequestHeader("Content-Type", fileType);
                                 //r.setRequestHeader("X-File-Name", encodeURIComponent(fileName));
                                 r.onreadystatechange = function () {
@@ -110,7 +112,7 @@
                                         var xhr = new XMLHttpRequest();
                                         xhr.open("GET", r.getResponseHeader("Location")+"/extractions", true);
                                         xhr.setRequestHeader('Accept', 'application/vnd.gini.v1+json');
-                                        xhr.setRequestHeader('Authorization', 'BEARER 0ab959ac-716e-4178-abf9-1d5e747a1e4f');
+                                        xhr.setRequestHeader('Authorization', GINITOKEN);
                                         xhr.onreadystatechange = function () {
                                             if (xhr.readyState != 4) return;
                                             console.log(xhr.responseText);
