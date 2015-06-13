@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="styles/main.css" type="text/css" />
     <link rel="stylesheet" href="styles/animations.css" type="text/css" />
     <link rel="stylesheet" href="styles/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="styles/icomoon/style.css" type="text/css" />
     <!-- script src="/socket.io/socket.io.js"></script -->
 </head>
@@ -40,7 +41,7 @@
         </div>
         <div class="header-caption">© Future of Finance Hackday Munich</div>
     </div>
-    <header class="main-title">
+    <header>
         <div>
             <span>Share</span>
             <span class="thin">X Flight</span>
@@ -58,8 +59,46 @@
             <li class="x-yellow">Air Berlin</li>
         </ul>
     </div>
+    <section class="container">
+        <div class="spacer"></div>
+        <h1><img src="styles/img/orderbook.svg" width="50px"/>Orderbook (live)</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Offer</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Airline</th>
+                            <th>Tickets</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="offers">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h2>Demand</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Airline</th>
+                            <th>Tickets</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="demand">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
     <script type="text/javascript" src="scripts/chartist.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="scripts/underscore.min.js"></script>
 </body>
 

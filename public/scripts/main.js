@@ -126,7 +126,10 @@
         };
 
         /* Initialize the chart with the above settings */
-        var chart = new Chartist.Line('#x-chart', {labels:[],series:[]}, options);
+        var chart = new Chartist.Line('#x-chart', {
+            labels: [],
+            series: []
+        }, options);
 
         // Create AJAX request
         window.setInterval(function() {
@@ -147,7 +150,7 @@
                         var output = {
                             data: val.map(function(obj) {
                                 if (iterate === 0) {
-                                    var date = new Date(obj.createdAt).toLocaleString().substring(11,19);
+                                    var date = new Date(obj.createdAt).toLocaleString().substring(11, 19);
                                     labels.push(date);
                                 };
                                 return obj.price
@@ -164,6 +167,32 @@
                     labels: labels.reverse(),
                     series: _.sortBy(series, 'key')
                 };
+
+                $("#offers").html("");
+                JSON.parse(r.response).filter(function(obj) {
+                    return obj.type === "sell";
+                }).slice(0,10).forEach(function(obj) {
+                    $("#offers").append("<tr>" +
+                        "<th scope='row'>" + obj.entityCode + "</th>" +
+                        "<td>" + obj.carrier + "</td>" +
+                        "<td>" + obj.quantity + "</td>" +
+                        "<td>" + obj.price + " €</td>" +
+                        "<td><a href='javascript:void(0)'>Buy</a></td>" +
+                        "</tr>");
+                });
+
+                $("#demand").html("");
+                JSON.parse(r.response).filter(function(obj) {
+                    return obj.type === "buy";
+                }).slice(0,10).forEach(function(obj) {
+                    $("#demand").append("<tr>" +
+                        "<th scope='row'>" + obj.entityCode + "</th>" +
+                        "<td>" + obj.carrier + "</td>" +
+                        "<td>" + obj.quantity + "</td>" +
+                        "<td>" + obj.price + " €</td>" +
+                        "<td><a href='javascript:void(0)'>Sell</a></td>" +
+                        "</tr>");
+                });
 
                 // console.log(labels);
                 // console.log(data);
