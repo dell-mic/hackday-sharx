@@ -8,6 +8,16 @@
 
 #import "FlightStore.h"
 
+#define kPrice @"price"
+#define kDeparture @"departure"
+#define kDepartureShort @"departureShort"
+#define kDestination @"destination"
+#define kDestinationShort @"destinationShort"
+#define kFlightId @"flightId"
+#define kDate @"date"
+#define kSeatClass @"seatClass"
+#define kSeat @"seat"
+
 @implementation FlightStore
 
 #pragma mark Singleton Methods
@@ -28,6 +38,36 @@
         [self loadData];
     }
     return self;
+}
+
+- (void)addFlight
+{
+    NSMutableDictionary *flightInfo = [[NSMutableDictionary alloc] init];
+    flightInfo[kDeparture] = @"Hamburg";
+    flightInfo[kDepartureShort] = @"HAM";
+    flightInfo[kDestination] = @"Frankfurt";
+    flightInfo[kDestinationShort] = @"FRA";
+    flightInfo[kPrice] = @(80.0);
+    flightInfo[kDate] = [self date];
+    flightInfo[kSeatClass] = @"Economy";
+    Flight *flight = [Flight flightWithInfo:flightInfo];
+    [self.openOrders addObject:flight];
+}
+
+- (NSDate *)date
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    // Extract date components into components1
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setCalendar:gregorianCalendar];
+    [components setYear:2015];
+    [components setMonth:7];
+    [components setDay:14];
+    
+    // Generate a new NSDate from components3.
+    NSDate *combinedDate = [gregorianCalendar dateFromComponents:components];
+    return combinedDate;
 }
 
 - (void)loadData
@@ -51,11 +91,13 @@
         }
     }
     
-    _bookedFlights = [[NSArray alloc] initWithArray:mutableBookedFlights];
-    _openOrders = [[NSArray alloc] initWithArray:mutableOpenOrders];
+    _bookedFlights = [[NSMutableArray alloc] initWithArray:mutableBookedFlights];
+    _openOrders = [[NSMutableArray alloc] initWithArray:mutableOpenOrders];
     
     NSLog(@"read %ld booked flights", [self.bookedFlights count]);
     NSLog(@"read %ld open orders", [self.openOrders count]);
+    
+    [self addFlight];
 
 }
 

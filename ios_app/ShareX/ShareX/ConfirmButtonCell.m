@@ -33,5 +33,13 @@
 
 }
 
+- (IBAction)confirmButtonPressed:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(didPressConfirmButton)]) {
+        [self.delegate didPressConfirmButton];
+    }
+}
+
+
 
 @end

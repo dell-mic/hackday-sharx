@@ -11,8 +11,10 @@
 
 @interface FlightStore : NSObject
 
-@property (nonatomic, strong) NSArray *bookedFlights; // what flights have I booked
-@property (nonatomic, strong) NSArray *openOrders; // what are my open orders?
+@property (nonatomic, strong) NSMutableArray *bookedFlights; // what flights have I booked
+@property (nonatomic, strong) NSMutableArray *openOrders; // what are my open orders?
+
+//- (void)addFlight:(Flight *)flight;
 
 + (id)sharedFlightStore;
 

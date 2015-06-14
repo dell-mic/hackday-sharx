@@ -8,6 +8,7 @@
 
 #import "FlightDetailViewController.h"
 #import "DefaultCell.h"
+#import "PriceDetailCell.h"
 
 #define DEFAULT_CELLS 5
 
@@ -16,6 +17,8 @@
 #define DATE_INDEX 2
 #define FLIGHT_ID_INDEX 3
 #define SEAT_CLASS 4
+
+//#define PRICE_DETAILS_INDEX 5
 
 
 @interface FlightDetailViewController ()
@@ -44,7 +47,8 @@
     UITableViewCell *cell = nil;
     
     static NSString *DefaultCellId = @"DefaultCell";
-    
+    static NSString *PriceInfoCellId = @"PriceInfoCell";
+
     if (indexPath.row < DEFAULT_CELLS) {
         cell = [tableView dequeueReusableCellWithIdentifier:DefaultCellId forIndexPath:indexPath];
         
@@ -79,6 +83,11 @@
             default:
                 break;
         }
+//        
+//        if (self.type == FDVC_Pending && indexPath.row == PRICE_DETAILS_INDEX) {
+//            cell = [tableView dequeueReusableCellWithIdentifier:PriceInfoCellId forIndexPath:indexPath];
+////            ((PriceDetailCell *)cell).currentPriceLabel = 
+//        }
         
     }
     return cell;
@@ -105,7 +114,6 @@
             break;
             
         case FDVC_Pending:
-            
             break;
         default:
             break;
@@ -131,7 +139,7 @@
             title = @"Archived ticket";
             break;
         case FDVC_Pending:
-            title = @"Pending...";
+            title = [NSString stringWithFormat:@"%@ - %@", self.flight.departureShort, self.flight.destinationShort];
             break;
         case FDVC_Voucher:
             title = @"My voucher";
@@ -145,7 +153,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50.0;
+    if (indexPath.row < DEFAULT_CELLS) {
+        return 50.0;
+    }
+    
+    return 85.0;
 }
 
 

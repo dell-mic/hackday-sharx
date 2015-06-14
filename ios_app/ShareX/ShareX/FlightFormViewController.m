@@ -9,8 +9,18 @@
 #include <stdlib.h>
 #import "FlightFormViewController.h"
 #import "DepartureCell.h"
-#import "ConfirmButtonCell.h"
 #import "CurrentPriceCell.h"
+#import "FlightStore.h"
+
+#define kPrice @"price"
+#define kDeparture @"departure"
+#define kDepartureShort @"departureShort"
+#define kDestination @"destination"
+#define kDestinationShort @"destinationShort"
+#define kFlightId @"flightId"
+#define kDate @"date"
+#define kSeatClass @"seatClass"
+#define kSeat @"seat"
 
 #define ROWS 7
 
@@ -79,6 +89,20 @@
     self.currentDateString = currentDateString;
 }
 
+- (void)didPressConfirmButton
+{
+//    NSMutableDictionary *flightInfo = [[NSMutableDictionary alloc] init];
+//    flightInfo[kDeparture] = @"Hamburg";
+//    flightInfo[kDeparture] = @"HAM";
+//    flightInfo[kDestination] = @"Frankfurt";
+//    flightInfo[kDestinationShort] = @"FRA";
+//    flightInfo[kPrice] = @(80.0);
+//    flightInfo[kDate] = [self date];
+//    flightInfo[kSeatClass] = @"Economy";
+//    Flight *flight = [Flight flightWithInfo:flightInfo];
+//    [[FlightStore sharedFlightStore] addFlight:flight];
+}
+
 
 #pragma mark - Table view delegate
 
@@ -104,8 +128,35 @@
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:CONFIRM_INDEX inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView endUpdates];
     }
+    else if (indexPath.row == CONFIRM_INDEX) {
+//        NSMutableDictionary *flightInfo = [[NSMutableDictionary alloc] init];
+//        flightInfo[kDeparture] = @"Hamburg";
+//        flightInfo[kDeparture] = @"HAM";
+//        flightInfo[kDestination] = @"Frankfurt";
+//        flightInfo[kDestinationShort] = @"FRA";
+//        flightInfo[kPrice] = @(80.0);
+//        flightInfo[kDate] = [self date];
+//        flightInfo[kSeatClass] = @"Economy";
+//        Flight *flight = [Flight flightWithInfo:flightInfo];
+//        [[FlightStore sharedFlightStore] addFlight:flight];
+    }
 }
 
+- (NSDate *)date
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    // Extract date components into components1
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setCalendar:gregorianCalendar];
+    [components setYear:2015];
+    [components setMonth:7];
+    [components setDay:14];
+    
+    // Generate a new NSDate from components3.
+    NSDate *combinedDate = [gregorianCalendar dateFromComponents:components];
+    return combinedDate;
+}
 
 #pragma mark - Table view data source
 

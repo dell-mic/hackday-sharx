@@ -28,12 +28,23 @@
     self.title = @"Pending orders";
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.tappedFlight = [[FlightStore sharedFlightStore] openOrders][indexPath.row];
+    
+    FlightDetailViewController *flightDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FlightDetailViewController"];
+    flightDetailViewController.flight = self.tappedFlight;
+    flightDetailViewController.type = FDVC_Pending;
+    
+    [self.navigationController pushViewController:flightDetailViewController animated:YES];
 }
 
 
@@ -68,17 +79,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 65.0;
+    return 90.0;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSString *segueID = segue.identifier;
-    FlightDetailViewController *flightDetailViewController = (FlightDetailViewController *)segue.destinationViewController;
-    flightDetailViewController.flight = self.tappedFlight;
-    if ([segueID isEqualToString:ShowPendingOrderDetailSegue]) {
-        flightDetailViewController.type = FDVC_Pending;
-    }
-}
 
 @end

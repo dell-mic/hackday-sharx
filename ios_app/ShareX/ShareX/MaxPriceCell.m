@@ -10,7 +10,6 @@
 
 @interface MaxPriceCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *maxPriceLabel;
 
 
 @end

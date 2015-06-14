@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "DatePickerCell.h"
+#import "ConfirmButtonCell.h"
 
-@interface FlightFormViewController : UITableViewController<DatePickerCellDelegate>
+@interface FlightFormViewController : UITableViewController<DatePickerCellDelegate, ConfirmButtonCellDelegate>
 
 
 @end
