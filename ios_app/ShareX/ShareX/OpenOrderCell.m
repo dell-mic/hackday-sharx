@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *currentPriceLabel;
 
 @end
 
@@ -28,7 +29,7 @@
 
 - (void)configureUI
 {
-    NSString *routeString = [NSString stringWithFormat:@"%@ - %@", self.flight.departureShort, self.flight.destinationShort];
+    NSString *routeString = [NSString stringWithFormat:@"%@, %@ - %@, %@", self.flight.departure, self.flight.departureShort, self.flight.destination, self.flight.destinationShort];
     self.routeLabel.text = routeString;
     
     self.flightIdLabel.text = [NSString stringWithFormat:@" (%@)", self.flight.flightId];
@@ -38,7 +39,10 @@
     NSString *dateString = [dateFormat stringFromDate:self.flight.date];
     self.dateLabel.text = dateString;
     
-    self.priceLabel.text = [NSString stringWithFormat:@"%ld", (long)self.flight.price];
+    self.priceLabel.text = [NSString stringWithFormat:@"%ld,-", (long)self.flight.price];
+    
+    NSInteger step = (NSInteger)rand() % 100;
+    self.currentPriceLabel.text =[NSString stringWithFormat:@"%ld,-", (long)self.flight.price+step];
 }
 
 

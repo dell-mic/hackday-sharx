@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5536B6C11B2CFC1B003EFA96 /* FlightDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5536B6C01B2CFC1B003EFA96 /* FlightDetailViewController.m */; };
 		5536B6C41B2D5FD3003EFA96 /* PendingOrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5536B6C31B2D5FD3003EFA96 /* PendingOrdersTableViewController.m */; };
+		555699C81B2D780F005E39AF /* DefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 555699C71B2D780F005E39AF /* DefaultCell.m */; };
 		559BE1371B2C5BE600484540 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1361B2C5BE600484540 /* DatePickerCell.m */; };
 		559BE13A1B2C613B00484540 /* DepartureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1391B2C613B00484540 /* DepartureCell.m */; };
 		559BE13E1B2C69B600484540 /* FlightClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE13D1B2C69B600484540 /* FlightClassCell.m */; };
@@ -46,6 +47,8 @@
 		5536B6C01B2CFC1B003EFA96 /* FlightDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailViewController.m; sourceTree = "<group>"; };
 		5536B6C21B2D5FD3003EFA96 /* PendingOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOrdersTableViewController.h; sourceTree = "<group>"; };
 		5536B6C31B2D5FD3003EFA96 /* PendingOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOrdersTableViewController.m; sourceTree = "<group>"; };
+		555699C61B2D780F005E39AF /* DefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultCell.h; sourceTree = "<group>"; };
+		555699C71B2D780F005E39AF /* DefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultCell.m; sourceTree = "<group>"; };
 		559BE1351B2C5BE600484540 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
 		559BE1361B2C5BE600484540 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
 		559BE1381B2C613B00484540 /* DepartureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureCell.h; sourceTree = "<group>"; };
@@ -104,6 +107,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		555699C51B2D77FC005E39AF /* Detail Cells */ = {
+			isa = PBXGroup;
+			children = (
+				555699C61B2D780F005E39AF /* DefaultCell.h */,
+				555699C71B2D780F005E39AF /* DefaultCell.m */,
+			);
+			name = "Detail Cells";
+			sourceTree = "<group>";
+		};
 		559BE13B1B2C613F00484540 /* Booking Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +201,7 @@
 		55A4D41F1B2C445700870AFC /* ShareX */ = {
 			isa = PBXGroup;
 			children = (
+				555699C51B2D77FC005E39AF /* Detail Cells */,
 				55A4D42A1B2C445700870AFC /* Main.storyboard */,
 				559BE1541B2CAC5500484540 /* Model */,
 				559BE1461B2C7AA000484540 /* Custom UI */,
@@ -348,6 +361,7 @@
 				559BE1571B2CAC6300484540 /* Flight.m in Sources */,
 				559BE1371B2C5BE600484540 /* DatePickerCell.m in Sources */,
 				55A4D4261B2C445700870AFC /* AppDelegate.m in Sources */,
+				555699C81B2D780F005E39AF /* DefaultCell.m in Sources */,
 				55A4D4231B2C445700870AFC /* main.m in Sources */,
 				559BE14C1B2C934C00484540 /* CurrentPriceCell.m in Sources */,
 				559BE14F1B2CA55200484540 /* MyFlightsTableViewController.m in Sources */,

@@ -9,8 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Flight.h"
 
+typedef enum {
+    BCT_Voucher = 0,
+    BCT_Booking,
+    BCT_Archive
+} BookingCellType;
+
 @interface BookingCell : UITableViewCell
 
+@property (nonatomic, assign) BookingCellType type;
 @property (nonatomic, strong) Flight *flight;
+
+
 
 @end

@@ -11,6 +11,7 @@
 
 @interface OpenOrderCell : UITableViewCell
 
+
 @property (nonatomic, strong) Flight *flight;
 
 

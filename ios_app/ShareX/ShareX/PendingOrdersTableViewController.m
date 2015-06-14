@@ -66,13 +66,18 @@
     cell.flight = flight;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65.0;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *segueID = segue.identifier;
     FlightDetailViewController *flightDetailViewController = (FlightDetailViewController *)segue.destinationViewController;
     flightDetailViewController.flight = self.tappedFlight;
     if ([segueID isEqualToString:ShowPendingOrderDetailSegue]) {
-        flightDetailViewController.showsPendingOrder = YES;
+        flightDetailViewController.type = FDVC_Pending;
     }
 }
 

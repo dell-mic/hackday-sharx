@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A45AB36C-2F85-4CAD-903E-A9F6E0E1E8CA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ShareX</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>395DA677DC6CCA478F7D6A3C75137F8FBD3F3F09</key>
+		<string>https://github.com/Michi-4G/hackday-sharx</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios_app/ShareX/ShareX.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>395DA677DC6CCA478F7D6A3C75137F8FBD3F3F09</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Michi-4G/hackday-sharx</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>395DA677DC6CCA478F7D6A3C75137F8FBD3F3F09</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>395DA677DC6CCA478F7D6A3C75137F8FBD3F3F09</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hackday-sharx</string>
+		</dict>
+	</array>
+</dict>
+</plist>

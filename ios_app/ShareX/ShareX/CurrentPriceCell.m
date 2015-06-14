@@ -29,7 +29,7 @@
 - (void)updatePrice
 {
     NSInteger step = (NSInteger)rand() % 20;
-    self.positiveChange = (rand() % 11) > 5;
+    self.positiveChange = (rand() % 11) > 3;
     self.currentPrice = self.positiveChange ? self.currentPrice + step : self.currentPrice - step;
 }
 

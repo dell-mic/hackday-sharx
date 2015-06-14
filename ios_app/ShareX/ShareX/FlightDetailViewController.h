@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #include "Flight.h"
 
-@interface FlightDetailViewController : UIViewController
+typedef enum {
+    FDVC_Booking,
+    FDVC_Voucher,
+    FDVC_Archive,
+    FDVC_Pending
+} FlightDetailViewControllerType;
+
+@interface FlightDetailViewController : UITableViewController
 
 @property (nonatomic, strong) Flight *flight;
-@property (nonatomic, assign) BOOL showsPendingOrder;
+@property (nonatomic, assign) FlightDetailViewControllerType type;
 
 @end
