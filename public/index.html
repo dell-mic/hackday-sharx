@@ -164,7 +164,7 @@
     </section>
     <section class="container">
         <div class="spacer"></div>
-        <h1><img src="styles/img/platform.svg" width="50px"/>The Platform</h1>
+        <h1><img class="img-responsive" src="styles/img/platform.svg" width="50px"/>The Platform</h1>
         <div class="anim-in-b">
             <img src="styles/img/architecture.svg" />
         </div>
@@ -175,8 +175,9 @@
         <div class="spacer"></div>
         <button type="button" id="gini-start" class="btn btn-lg btn-primary center-block anim-in-r">Analyze flight tickets from your Google account</button>
         <div id="gini-kpi" class="center-block">
-            <h2>Your savings</h2>
+            <h2 class="text-center center-block">Your savings <small>3% of total</small></h2>
             <div>802,41 €</div>
+            <button id="show-gini-detail" type="button" class="btn btn-lg btn-default center-block" href="javascript:void(0)">Display Details</button>
         </div>
         <div class="loading-block center-block" style="width: 400px;">
             <h3>Gini API is working very hard...</h3>
@@ -184,6 +185,19 @@
                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                 </div>
             </div>
+        </div>
+        <div id="gini-output" class="center-block">
+            <h3>Gini Output</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Invoice</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="gini-detail">
+                </tbody>
+            </table>
         </div>
         <div class="spacer"></div>
         <div class="spacer"></div>

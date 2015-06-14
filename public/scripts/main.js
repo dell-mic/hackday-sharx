@@ -64,16 +64,21 @@ function addListeners() {
     // init element visibility
     $(".loading-block").hide();
     $("#gini-kpi").hide();
+    $("#gini-output").hide();
     document.getElementById("gini-start").addEventListener('click', function(event) {
         $(".loading-block").fadeIn();
         // window.setTimeout(function() {
         //     $(".loading-block").fadeOut();
         //     $("#gini-kpi").fadeIn();
         // }, 3000);
-
+        $("#gini-detail").html(" ");
         document.querySelector("#gini-kpi div").innerHTML = "0 EUR"
 
         handleAuthClick(event);
+    });
+
+    document.getElementById("show-gini-detail").addEventListener('click', function(event) {
+        $("#gini-output").fadeIn();
     });
 
     if (!language) return;
@@ -210,30 +215,55 @@ function initContent() {
                 series: _.sortBy(series, 'key')
             };
 
-            $("#offers").html("");
+            //$("#offers").html("");
             _.sortBy(JSON.parse(r.response).filter(function(obj) {
                 return obj.type === "sell";
-            }), "price").slice(0, 10).forEach(function(obj) {
-                $("#offers").append("<tr>" +
-                    "<th scope='row'>" + obj.entityCode + "</th>" +
+            }), "price").slice(0, 10).forEach(function(obj, index) {
+
+                var newHtml = "<td scope=\"row\">" + obj.entityCode + "</td>" +
                     "<td>" + obj.carrier + "</td>" +
                     "<td>" + obj.quantity + "</td>" +
                     "<td>" + obj.price + " €</td>" +
-                    "<td><a href='javascript:void(0)'>Buy</a></td>" +
-                    "</tr>");
+                    "<td><a href=\"javascript:void(0)\">Buy</a></td>";
+
+                var rows = $("#offers").children().toArray(); //[index];
+                if (rows.length > index) {
+                    row = rows[index];
+                    if (row.innerHTML === newHtml) {
+                        // nothing should happen
+                    } else {
+                        // TODO Animate
+                        row.innerHTML = newHtml;
+                    };
+                } else {
+                    $("#offers").append("<tr class='anim-row'>" +
+                        newHtml + "</tr>");
+                }
             });
 
-            $("#demand").html("");
             _.sortBy(JSON.parse(r.response).filter(function(obj) {
                 return obj.type === "buy";
-            }), "price").reverse().slice(0, 10).forEach(function(obj) {
-                $("#demand").append("<tr>" +
-                    "<th scope='row'>" + obj.entityCode + "</th>" +
+            }), "price").slice(0, 10).forEach(function(obj, index) {
+
+                var newHtml = "<td scope=\"row\">" + obj.entityCode + "</td>" +
                     "<td>" + obj.carrier + "</td>" +
                     "<td>" + obj.quantity + "</td>" +
                     "<td>" + obj.price + " €</td>" +
-                    "<td><a href='javascript:void(0)'>Sell</a></td>" +
-                    "</tr>");
+                    "<td><a href=\"javascript:void(0)\">Buy</a></td>";
+
+                var rows = $("#demand").children().toArray(); //[index];
+                if (rows.length > index) {
+                    row = rows[index];
+                    if (row.innerHTML === newHtml) {
+                        // nothing should happen
+                    } else {
+                        // TODO Animat
+                        row.innerHTML = newHtml;
+                    };
+                } else {
+                    $("#demand").append("<tr class='anim-row'>" +
+                        newHtml + "</tr>");
+                }
             });
 
             // console.log(labels);
@@ -506,7 +536,7 @@ function checkAuth() {
  */
 function handleAuthResult(authResult) {
     //var authorizeDiv = document.getElementById('authorize-div');
-    if (!authResult.error){//authResult && !authResult.error) {
+    if (!authResult.error) { //authResult && !authResult.error) {
         // Hide auth UI, then load client library.
         //authorizeDiv.style.display = 'none';
         loadGmailApi();
@@ -591,14 +621,19 @@ function startSearch() {
                                     var oResponse = JSON.parse(xhr.responseText);
                                     console.log(fileName);
                                     console.log(r.getResponseHeader("Location"));
+                                    var amount, eurAmount;
                                     if (oResponse.extractions.amountToPay) {
                                         console.log(oResponse.extractions.amountToPay.value);
-                                        var amount = oResponse.extractions.amountToPay.value;
-                                        var eurAmount = currenyCalculation(amount.split(":")[0]);
+                                        amount = oResponse.extractions.amountToPay.value;
+                                        eurAmount = currenyCalculation(amount.split(":")[0]);
                                         console.log(eurAmount);
                                         totalAmount += parseFloat(eurAmount);
                                         appendPre(totalAmount * SAVING_PCT);
                                     }
+                                    $("#gini-detail").append("<tr><td>" +
+                                        fileName + "</td><td>" + 
+                                        eurAmount + " €</td></tr>")
+
                                 }
                                 xhr.send();
 
