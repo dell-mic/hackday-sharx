@@ -510,7 +510,7 @@ function Circle() {
 var totalAmount = 0.0;
 var openGiniDocs = [];
 
-var SAVING_PCT = 0.03;
+var SAVING_PCT = 0.1;
 
 // Your Client ID can be retrieved from your project in the Google
 // Developer Console, https://console.developers.google.com
