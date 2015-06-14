@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5536B6C11B2CFC1B003EFA96 /* FlightDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5536B6C01B2CFC1B003EFA96 /* FlightDetailViewController.m */; };
+		5536B6C41B2D5FD3003EFA96 /* PendingOrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5536B6C31B2D5FD3003EFA96 /* PendingOrdersTableViewController.m */; };
+		559BE1371B2C5BE600484540 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1361B2C5BE600484540 /* DatePickerCell.m */; };
+		559BE13A1B2C613B00484540 /* DepartureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1391B2C613B00484540 /* DepartureCell.m */; };
+		559BE13E1B2C69B600484540 /* FlightClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE13D1B2C69B600484540 /* FlightClassCell.m */; };
+		559BE1411B2C726500484540 /* ConfirmButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1401B2C726500484540 /* ConfirmButtonCell.m */; };
+		559BE1451B2C74FF00484540 /* MaxPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1441B2C74FF00484540 /* MaxPriceCell.m */; };
+		559BE1491B2C7ABC00484540 /* CircularView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1481B2C7ABC00484540 /* CircularView.m */; };
+		559BE14C1B2C934C00484540 /* CurrentPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE14B1B2C934C00484540 /* CurrentPriceCell.m */; };
+		559BE14F1B2CA55200484540 /* MyFlightsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE14E1B2CA55200484540 /* MyFlightsTableViewController.m */; };
+		559BE1521B2CA94200484540 /* FlightStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1511B2CA94200484540 /* FlightStore.m */; };
+		559BE1571B2CAC6300484540 /* Flight.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE1561B2CAC6300484540 /* Flight.m */; };
+		559BE15B1B2CB43600484540 /* BookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE15A1B2CB43600484540 /* BookingCell.m */; };
+		559BE15F1B2CB44D00484540 /* OpenOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559BE15E1B2CB44D00484540 /* OpenOrderCell.m */; };
+		559BE1611B2CB76F00484540 /* MyBookings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559BE1601B2CB76F00484540 /* MyBookings.plist */; };
+		55A4D4231B2C445700870AFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A4D4221B2C445700870AFC /* main.m */; };
+		55A4D4261B2C445700870AFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A4D4251B2C445700870AFC /* AppDelegate.m */; };
+		55A4D42C1B2C445700870AFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A4D42A1B2C445700870AFC /* Main.storyboard */; };
+		55A4D42E1B2C445700870AFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A4D42D1B2C445700870AFC /* Images.xcassets */; };
+		55A4D4311B2C445700870AFC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A4D42F1B2C445700870AFC /* LaunchScreen.xib */; };
+		55A4D43D1B2C445700870AFC /* ShareXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A4D43C1B2C445700870AFC /* ShareXTests.m */; };
+		55AECD981B2C4C6100DD2CAD /* FlightFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AECD971B2C4C6100DD2CAD /* FlightFormViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		55A4D4371B2C445700870AFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55A4D4151B2C445700870AFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55A4D41C1B2C445700870AFC;
+			remoteInfo = ShareX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5536B6BF1B2CFC1B003EFA96 /* FlightDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailViewController.h; sourceTree = "<group>"; };
+		5536B6C01B2CFC1B003EFA96 /* FlightDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailViewController.m; sourceTree = "<group>"; };
+		5536B6C21B2D5FD3003EFA96 /* PendingOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOrdersTableViewController.h; sourceTree = "<group>"; };
+		5536B6C31B2D5FD3003EFA96 /* PendingOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOrdersTableViewController.m; sourceTree = "<group>"; };
+		559BE1351B2C5BE600484540 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
+		559BE1361B2C5BE600484540 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
+		559BE1381B2C613B00484540 /* DepartureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureCell.h; sourceTree = "<group>"; };
+		559BE1391B2C613B00484540 /* DepartureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureCell.m; sourceTree = "<group>"; };
+		559BE13C1B2C69B600484540 /* FlightClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightClassCell.h; sourceTree = "<group>"; };
+		559BE13D1B2C69B600484540 /* FlightClassCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightClassCell.m; sourceTree = "<group>"; };
+		559BE13F1B2C726500484540 /* ConfirmButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmButtonCell.h; sourceTree = "<group>"; };
+		559BE1401B2C726500484540 /* ConfirmButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmButtonCell.m; sourceTree = "<group>"; };
+		559BE1431B2C74FF00484540 /* MaxPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxPriceCell.h; sourceTree = "<group>"; };
+		559BE1441B2C74FF00484540 /* MaxPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxPriceCell.m; sourceTree = "<group>"; };
+		559BE1471B2C7ABC00484540 /* CircularView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularView.h; sourceTree = "<group>"; };
+		559BE1481B2C7ABC00484540 /* CircularView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularView.m; sourceTree = "<group>"; };
+		559BE14A1B2C934C00484540 /* CurrentPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentPriceCell.h; sourceTree = "<group>"; };
+		559BE14B1B2C934C00484540 /* CurrentPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentPriceCell.m; sourceTree = "<group>"; };
+		559BE14D1B2CA55200484540 /* MyFlightsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlightsTableViewController.h; sourceTree = "<group>"; };
+		559BE14E1B2CA55200484540 /* MyFlightsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlightsTableViewController.m; sourceTree = "<group>"; };
+		559BE1501B2CA94200484540 /* FlightStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightStore.h; sourceTree = "<group>"; };
+		559BE1511B2CA94200484540 /* FlightStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightStore.m; sourceTree = "<group>"; };
+		559BE1551B2CAC6300484540 /* Flight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flight.h; sourceTree = "<group>"; };
+		559BE1561B2CAC6300484540 /* Flight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flight.m; sourceTree = "<group>"; };
+		559BE1591B2CB43600484540 /* BookingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingCell.h; sourceTree = "<group>"; };
+		559BE15A1B2CB43600484540 /* BookingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingCell.m; sourceTree = "<group>"; };
+		559BE15D1B2CB44D00484540 /* OpenOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenOrderCell.h; sourceTree = "<group>"; };
+		559BE15E1B2CB44D00484540 /* OpenOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenOrderCell.m; sourceTree = "<group>"; };
+		559BE1601B2CB76F00484540 /* MyBookings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyBookings.plist; sourceTree = "<group>"; };
+		55A4D41D1B2C445700870AFC /* ShareX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55A4D4211B2C445700870AFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55A4D4221B2C445700870AFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55A4D4241B2C445700870AFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		55A4D4251B2C445700870AFC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		55A4D42B1B2C445700870AFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		55A4D42D1B2C445700870AFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		55A4D4301B2C445700870AFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		55A4D4361B2C445700870AFC /* ShareXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55A4D43B1B2C445700870AFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55A4D43C1B2C445700870AFC /* ShareXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareXTests.m; sourceTree = "<group>"; };
+		55AECD961B2C4C6100DD2CAD /* FlightFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightFormViewController.h; sourceTree = "<group>"; };
+		55AECD971B2C4C6100DD2CAD /* FlightFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightFormViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		55A4D41A1B2C445700870AFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55A4D4331B2C445700870AFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		559BE13B1B2C613F00484540 /* Booking Cells */ = {
+			isa = PBXGroup;
+			children = (
+				559BE1351B2C5BE600484540 /* DatePickerCell.h */,
+				559BE1361B2C5BE600484540 /* DatePickerCell.m */,
+				559BE1381B2C613B00484540 /* DepartureCell.h */,
+				559BE1391B2C613B00484540 /* DepartureCell.m */,
+				559BE13C1B2C69B600484540 /* FlightClassCell.h */,
+				559BE13D1B2C69B600484540 /* FlightClassCell.m */,
+				559BE13F1B2C726500484540 /* ConfirmButtonCell.h */,
+				559BE1401B2C726500484540 /* ConfirmButtonCell.m */,
+				559BE1431B2C74FF00484540 /* MaxPriceCell.h */,
+				559BE1441B2C74FF00484540 /* MaxPriceCell.m */,
+				559BE14A1B2C934C00484540 /* CurrentPriceCell.h */,
+				559BE14B1B2C934C00484540 /* CurrentPriceCell.m */,
+			);
+			name = "Booking Cells";
+			sourceTree = "<group>";
+		};
+		559BE1461B2C7AA000484540 /* Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				559BE1471B2C7ABC00484540 /* CircularView.h */,
+				559BE1481B2C7ABC00484540 /* CircularView.m */,
+			);
+			name = "Custom UI";
+			sourceTree = "<group>";
+		};
+		559BE1531B2CAB2500484540 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				55AECD961B2C4C6100DD2CAD /* FlightFormViewController.h */,
+				55AECD971B2C4C6100DD2CAD /* FlightFormViewController.m */,
+				559BE14D1B2CA55200484540 /* MyFlightsTableViewController.h */,
+				559BE14E1B2CA55200484540 /* MyFlightsTableViewController.m */,
+				5536B6BF1B2CFC1B003EFA96 /* FlightDetailViewController.h */,
+				5536B6C01B2CFC1B003EFA96 /* FlightDetailViewController.m */,
+				5536B6C21B2D5FD3003EFA96 /* PendingOrdersTableViewController.h */,
+				5536B6C31B2D5FD3003EFA96 /* PendingOrdersTableViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		559BE1541B2CAC5500484540 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				559BE1551B2CAC6300484540 /* Flight.h */,
+				559BE1561B2CAC6300484540 /* Flight.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		559BE1581B2CB41800484540 /* My Flights Cell */ = {
+			isa = PBXGroup;
+			children = (
+				559BE1591B2CB43600484540 /* BookingCell.h */,
+				559BE15A1B2CB43600484540 /* BookingCell.m */,
+				559BE15D1B2CB44D00484540 /* OpenOrderCell.h */,
+				559BE15E1B2CB44D00484540 /* OpenOrderCell.m */,
+			);
+			name = "My Flights Cell";
+			sourceTree = "<group>";
+		};
+		55A4D4141B2C445700870AFC = {
+			isa = PBXGroup;
+			children = (
+				55A4D41F1B2C445700870AFC /* ShareX */,
+				55A4D4201B2C445700870AFC /* Supporting Files */,
+				55A4D4391B2C445700870AFC /* ShareXTests */,
+				55A4D41E1B2C445700870AFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		55A4D41E1B2C445700870AFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55A4D41D1B2C445700870AFC /* ShareX.app */,
+				55A4D4361B2C445700870AFC /* ShareXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55A4D41F1B2C445700870AFC /* ShareX */ = {
+			isa = PBXGroup;
+			children = (
+				55A4D42A1B2C445700870AFC /* Main.storyboard */,
+				559BE1541B2CAC5500484540 /* Model */,
+				559BE1461B2C7AA000484540 /* Custom UI */,
+				559BE13B1B2C613F00484540 /* Booking Cells */,
+				559BE1581B2CB41800484540 /* My Flights Cell */,
+				559BE1531B2CAB2500484540 /* View Controllers */,
+				559BE1501B2CA94200484540 /* FlightStore.h */,
+				559BE1511B2CA94200484540 /* FlightStore.m */,
+				55A4D42D1B2C445700870AFC /* Images.xcassets */,
+			);
+			path = ShareX;
+			sourceTree = "<group>";
+		};
+		55A4D4201B2C445700870AFC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55A4D4241B2C445700870AFC /* AppDelegate.h */,
+				55A4D4251B2C445700870AFC /* AppDelegate.m */,
+				55A4D42F1B2C445700870AFC /* LaunchScreen.xib */,
+				55A4D4211B2C445700870AFC /* Info.plist */,
+				55A4D4221B2C445700870AFC /* main.m */,
+				559BE1601B2CB76F00484540 /* MyBookings.plist */,
+			);
+			name = "Supporting Files";
+			path = ShareX;
+			sourceTree = "<group>";
+		};
+		55A4D4391B2C445700870AFC /* ShareXTests */ = {
+			isa = PBXGroup;
+			children = (
+				55A4D43C1B2C445700870AFC /* ShareXTests.m */,
+				55A4D43A1B2C445700870AFC /* Supporting Files */,
+			);
+			path = ShareXTests;
+			sourceTree = "<group>";
+		};
+		55A4D43A1B2C445700870AFC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55A4D43B1B2C445700870AFC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		55A4D41C1B2C445700870AFC /* ShareX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55A4D4401B2C445700870AFC /* Build configuration list for PBXNativeTarget "ShareX" */;
+			buildPhases = (
+				55A4D4191B2C445700870AFC /* Sources */,
+				55A4D41A1B2C445700870AFC /* Frameworks */,
+				55A4D41B1B2C445700870AFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareX;
+			productName = ShareX;
+			productReference = 55A4D41D1B2C445700870AFC /* ShareX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		55A4D4351B2C445700870AFC /* ShareXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55A4D4431B2C445700870AFC /* Build configuration list for PBXNativeTarget "ShareXTests" */;
+			buildPhases = (
+				55A4D4321B2C445700870AFC /* Sources */,
+				55A4D4331B2C445700870AFC /* Frameworks */,
+				55A4D4341B2C445700870AFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55A4D4381B2C445700870AFC /* PBXTargetDependency */,
+			);
+			name = ShareXTests;
+			productName = ShareXTests;
+			productReference = 55A4D4361B2C445700870AFC /* ShareXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		55A4D4151B2C445700870AFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Nikolas Burk";
+				TargetAttributes = {
+					55A4D41C1B2C445700870AFC = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = N6KFU9XHHM;
+					};
+					55A4D4351B2C445700870AFC = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 55A4D41C1B2C445700870AFC;
+					};
+				};
+			};
+			buildConfigurationList = 55A4D4181B2C445700870AFC /* Build configuration list for PBXProject "ShareX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 55A4D4141B2C445700870AFC;
+			productRefGroup = 55A4D41E1B2C445700870AFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				55A4D41C1B2C445700870AFC /* ShareX */,
+				55A4D4351B2C445700870AFC /* ShareXTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55A4D41B1B2C445700870AFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				559BE1611B2CB76F00484540 /* MyBookings.plist in Resources */,
+				55A4D42C1B2C445700870AFC /* Main.storyboard in Resources */,
+				55A4D4311B2C445700870AFC /* LaunchScreen.xib in Resources */,
+				55A4D42E1B2C445700870AFC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55A4D4341B2C445700870AFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		55A4D4191B2C445700870AFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				559BE1491B2C7ABC00484540 /* CircularView.m in Sources */,
+				559BE15B1B2CB43600484540 /* BookingCell.m in Sources */,
+				559BE13E1B2C69B600484540 /* FlightClassCell.m in Sources */,
+				559BE13A1B2C613B00484540 /* DepartureCell.m in Sources */,
+				559BE15F1B2CB44D00484540 /* OpenOrderCell.m in Sources */,
+				5536B6C41B2D5FD3003EFA96 /* PendingOrdersTableViewController.m in Sources */,
+				559BE1451B2C74FF00484540 /* MaxPriceCell.m in Sources */,
+				559BE1411B2C726500484540 /* ConfirmButtonCell.m in Sources */,
+				5536B6C11B2CFC1B003EFA96 /* FlightDetailViewController.m in Sources */,
+				55AECD981B2C4C6100DD2CAD /* FlightFormViewController.m in Sources */,
+				559BE1571B2CAC6300484540 /* Flight.m in Sources */,
+				559BE1371B2C5BE600484540 /* DatePickerCell.m in Sources */,
+				55A4D4261B2C445700870AFC /* AppDelegate.m in Sources */,
+				55A4D4231B2C445700870AFC /* main.m in Sources */,
+				559BE14C1B2C934C00484540 /* CurrentPriceCell.m in Sources */,
+				559BE14F1B2CA55200484540 /* MyFlightsTableViewController.m in Sources */,
+				559BE1521B2CA94200484540 /* FlightStore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55A4D4321B2C445700870AFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55A4D43D1B2C445700870AFC /* ShareXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		55A4D4381B2C445700870AFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55A4D41C1B2C445700870AFC /* ShareX */;
+			targetProxy = 55A4D4371B2C445700870AFC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		55A4D42A1B2C445700870AFC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55A4D42B1B2C445700870AFC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		55A4D42F1B2C445700870AFC /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55A4D4301B2C445700870AFC /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		55A4D43E1B2C445700870AFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		55A4D43F1B2C445700870AFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		55A4D4411B2C445700870AFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikolas Burk (5VU93FVPR4)";
+				INFOPLIST_FILE = ShareX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97cbcf2f-b4c5-4b38-8175-88113a643489";
+			};
+			name = Debug;
+		};
+		55A4D4421B2C445700870AFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = ShareX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97cbcf2f-b4c5-4b38-8175-88113a643489";
+			};
+			name = Release;
+		};
+		55A4D4441B2C445700870AFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ShareXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShareX.app/ShareX";
+			};
+			name = Debug;
+		};
+		55A4D4451B2C445700870AFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ShareXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShareX.app/ShareX";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55A4D4181B2C445700870AFC /* Build configuration list for PBXProject "ShareX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55A4D43E1B2C445700870AFC /* Debug */,
+				55A4D43F1B2C445700870AFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55A4D4401B2C445700870AFC /* Build configuration list for PBXNativeTarget "ShareX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55A4D4411B2C445700870AFC /* Debug */,
+				55A4D4421B2C445700870AFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55A4D4431B2C445700870AFC /* Build configuration list for PBXNativeTarget "ShareXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55A4D4441B2C445700870AFC /* Debug */,
+				55A4D4451B2C445700870AFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 55A4D4151B2C445700870AFC /* Project object */;
+}
