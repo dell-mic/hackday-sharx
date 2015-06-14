@@ -1,7 +1,7 @@
 //(function() {
 //    "use strict";
 
-var GINITOKEN = "BEARER 84483968-36c4-4c33-a9b4-d00baa9220db";
+var GINITOKEN = "BEARER 5374a7ab-5457-4b97-8551-73d77f6600c8";
 
 // Bootstrap
 window.addEventListener('load', function(e) {
